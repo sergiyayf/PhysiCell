@@ -95,7 +95,9 @@ void fill_circle( std::vector<double> center , double radius , Cell_Definition* 
 
 void fill_circle( std::vector<double> center , double radius , int cell_type , double compression );
 void fill_circle( std::vector<double> center , double radius , int cell_type ); 
-
+	
+void draw_circle( std::vector<double> center, double radius , Cell_Definition* pCD , double compression );
+void draw_circle( std::vector<double> center, double radius , Cell_Definition* pCD ); 
 
 void fill_annulus( std::vector<double> center , double outer_radius , double inner_radius, Cell_Definition* pCD , double compression ); 
 void fill_annulus( std::vector<double> center , double outer_radius , double inner_radius, Cell_Definition* pCD ); 
