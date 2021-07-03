@@ -24,7 +24,7 @@ This release ...
 
 ### Minor new features and changes: 
 
-+ ... 
++ Added new functions to ./modules/PhysiCell_geometry to draw (unfilled) circles of cells 
 
 ### Beta features (not fully supported):
  
