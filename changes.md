@@ -35,6 +35,7 @@ This release ...
 ### Bugfixes: 
 
 + In response to SourceForge ticket ...
++ Cell definition parsing (from XML) now correctly set the cell radius. 
 
 ### Notices for intended changes that may affect backwards compatibility:
  
