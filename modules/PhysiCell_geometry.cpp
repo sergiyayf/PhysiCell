@@ -187,6 +187,38 @@ void fill_annulus( std::vector<double> center , double outer_radius , double inn
 
 void fill_annulus( std::vector<double> center , double outer_radius , double inner_radius, int cell_type ) 
 { return fill_annulus( center,outer_radius,inner_radius,find_cell_definition(cell_type),1.0); } 
+	
+// draw circles (not filled)
+	
+void draw_circle( std::vector<double> center, double radius , Cell_Definition* pCD, double compression )
+{
+	double total_length = 6.283185307179586 * radius; 
+	
+	double cell_radius = pCD->phenotype.geometry.radius; 
+	double cr2 = cell_radius * cell_radius; 
+	double spacing = compression * cell_radius * 2.0; 
+	
+	// adjust spacing so it's an integer number of cells 
+	int number_of_cells = (int) floor( total_length / spacing ); 
+	spacing = total_length / (double) number_of_cells; 
+	
+	double angle = 0.0; 
+	double dAngle = 6.283185307179586 / (double) number_of_cells; 
+	
+	std::vector<double> position = {0,0,0}; 
+	
+	for( int n=0 ; n < number_of_cells ; n++ )
+	{
+		Cell* pC = create_cell( *pCD ); 
+		angle = n * dAngle; 
+		position = { center[0] + radius * cos(angle) , center[1] + radius * sin(angle) , center[2] }; 
+		pC->assign_position( position ); 
+	}
+	return;
+}
+
+void draw_circle( std::vector<double> center, double radius , Cell_Definition* pCD )
+{ return draw_circle(center,radius,pCD,1.0); }
 
 // draw lines 
 
