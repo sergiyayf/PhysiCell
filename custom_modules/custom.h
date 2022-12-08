@@ -66,7 +66,8 @@
 */
 
 #include "../core/PhysiCell.h"
-#include "../modules/PhysiCell_standard_modules.h" 
+#include "../modules/PhysiCell_standard_modules.h"
+#include "../BioFVM/BioFVM_MultiCellDS.h"
 
 using namespace BioFVM; 
 using namespace PhysiCell;

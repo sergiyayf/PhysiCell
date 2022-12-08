@@ -138,8 +138,15 @@ void setup_microenvironment( void )
 	// extra Dirichlet nodes here. 
 	
 	// initialize BioFVM 
-	
-	initialize_microenvironment(); 	
+	initialize_microenvironment();
+    
+    if (parameters.bools("enable_chkpt")){
+        
+        std::cout<<" I am in the changing micro thing"<<std::endl; 
+        microenvironment.density_vector(0) = {222,333}; 
+        
+        read_microenvironment_from_MultiCellDS_xml(microenvironment, parameters.strings("filename_chkpt"));
+    } 
 	
 	return; 
 }
@@ -149,6 +156,7 @@ void setup_tissue( void )
     
     if (parameters.bools("enable_chkpt")){
         load_cells_physicell(parameters.strings("filename_chkpt"));
+    
 } else {
 	double Xmin = microenvironment.mesh.bounding_box[0]; 
 	double Ymin = microenvironment.mesh.bounding_box[1]; 
