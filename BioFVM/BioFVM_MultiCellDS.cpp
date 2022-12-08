@@ -1094,14 +1094,12 @@ void read_microenvironment_from_MultiCellDS_xml( Microenvironment& M_destination
 	xml_node root = xml_dom.child("MultiCellDS");
 	root = root.child( "microenvironment");
 	root = root.child("domain");
-    std::cout<<root<<std::endl;
-	// read all the microenvironments 
+    // read all the microenvironments 
 	
 	// int microenvironment_index = -1; // g++ warning: set but not used 
 	while( root )
 	{  
-        std::cout<<"aha"<<std::endl;
-		M_destination.name = root.attribute("name").value(); 
+        M_destination.name = root.attribute("name").value(); 
 		
 		// read the mesh 
 		bool cartesian = true; 
@@ -1342,23 +1340,20 @@ void read_microenvironment_from_MultiCellDS_xml( Microenvironment& M_destination
         
 		
 		// read in if stored as matlab 	
-        std::cout<<node.attribute( "type" ).value()<<std::endl;
-        std::cout<<strcmp(  node.attribute( "type" ).value()  , "matlab" )<<std::endl;
+        
 		if( strcmp(  node.attribute( "type" ).value()  , "matlab" ) == 0 ) 
 		{  
             
 			unsigned int rows; 
 			unsigned int columns;
-            std::cout<<"haha, error comes exactly here"<<std::endl;
+            
             xml_node node2 = node.child("filename");
-            std::cout<<node2.text().get()<<std::endl;
-            std::cout<<node2<<std::endl;
+            
             char matfilename[1024]; 
             sprintf( matfilename , "%s_microenvironment0.mat" , filename_base.c_str() );
             
 			FILE* fp = read_matlab_header( &rows, &columns, matfilename ); 		
-            std::cout<<"haha, error comes exactly here"<<std::endl;
-			unsigned int start_row = 0; 
+            unsigned int start_row = 0; 
 			if( rows > M_destination.number_of_densities() )
 			{ start_row = 4; }
 			
@@ -1394,7 +1389,7 @@ void read_microenvironment_from_MultiCellDS_xml( Microenvironment& M_destination
 		}
 		root = root.next_sibling(); 
 	}		
-    std::cout<<"but this "<<std::endl;
+    
 	std::cout << "done!" << std::endl; 
 	return; 
 } 

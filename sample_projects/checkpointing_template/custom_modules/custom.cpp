@@ -141,10 +141,7 @@ void setup_microenvironment( void )
 	initialize_microenvironment();
     
     if (parameters.bools("enable_chkpt")){
-        
-        std::cout<<" I am in the changing micro thing"<<std::endl; 
-        microenvironment.density_vector(0) = {222,333}; 
-        
+        std::cout<<"Loading microenvironment from "<<parameters.strings("filename_chkpt")+"_microenvironment0.mat"<<std::endl;         
         read_microenvironment_from_MultiCellDS_xml(microenvironment, parameters.strings("filename_chkpt"));
     } 
 	
@@ -155,6 +152,7 @@ void setup_tissue( void )
 {
     
     if (parameters.bools("enable_chkpt")){
+        std::cout<<"Loading cell information from "<<parameters.strings("filename_chkpt")+"_cells.mat"<<std::endl;
         load_cells_physicell(parameters.strings("filename_chkpt"));
     
 } else {

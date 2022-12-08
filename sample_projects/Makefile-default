@@ -71,7 +71,7 @@ name:
 
 # sample projects 	
 list-projects:
-	@echo "Sample projects: template biorobots-sample cancer-biorobots-sample cancer-immune-sample"
+	@echo "Sample projects: template checkpointing-template biorobots-sample cancer-biorobots-sample cancer-immune-sample"
 	@echo "                 celltypes3-sample heterogeneity-sample pred-prey-farmer virus-macrophage-sample"
 	@echo "                 worm-sample interaction-sample"
 	@echo ""
@@ -86,6 +86,17 @@ template:
 	cp ./sample_projects/template/Makefile .
 	cp ./config/PhysiCell_settings.xml ./config/PhysiCell_settings-backup.xml 
 	cp ./sample_projects/template/config/* ./config/
+	
+checkpointing-template:
+	cp ./sample_projects/checkpointing_template/custom_modules/* ./custom_modules/
+	touch main.cpp && cp main.cpp main-backup.cpp
+	cp ./sample_projects/checkpointing_template/main.cpp ./main.cpp 
+	cp Makefile Makefile-backup
+	cp ./sample_projects/checkpointing_template/Makefile .
+	cp ./config/PhysiCell_settings.xml ./config/PhysiCell_settings-backup.xml 
+	cp ./sample_projects/checkpointing_template/config/* ./config/
+	mkdir output_restart 
+	
 	
 # sample projects 
 
